@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="C:\Users\Murilo\Desktop\Site\BotaoRioters.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIOTERS</title>
+    <style>
+        .button-container {
+            display: flex; /* Usar flexbox para alinhar os botões */
+            justify-content: center; /* Centralizar os botões horizontalmente */
+            gap: 0px; /* Espaço entre os botões */
+            flex-wrap: wrap; /* Permitir que os itens sejam movidos para a próxima linha */
+            margin: 0;
+        }
+        body {
+            margin: 0; /* Remove margens do body */
+            height: 2000px;
+            display: flex;
+            flex-direction: column;
+            background-color: gray;
+            font-family: 'Nunito ', sans-serif; 
+            color: rgb(0, 0, 0);
+        }
+
+        /* Estilo do cabeçalho */
+        header {
+            background-color: gray; /* Cor de fundo inicial */
+            color: white; /* Texto branco */
+            display: flex; /* Flexbox para organizar o conteúdo */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: flex-start; /* Alinhar os itens à esquerda */
+            gap: 20px; /* Espaço entre os elementos no header */
+            padding: 10px 20px; /* Espaçamento interno */
+            position: fixed; /* Fixa a barra no topo */
+            top: 10; /* Alinhada ao topo */
+            width: 100%; /* Ocupa toda a largura da tela */
+            z-index: 1000; /* Mantém a barra sobre outros conteúdos */
+            transition: background-color 0.3s ease; /* Efeito suave na transição de cor */
+            height: 100px; /* Ajuste a altura conforme necessário */
+        }
+
+        .header-scrolled {
+            background-color: #000000; /* Nova cor do cabeçalho */
+        }
+
+        .rioters-button {
+            background-color: black; /* Cor de fundo do botão */
+            color: white; /* Cor do texto */
+            border: none; /* Remover bordas padrão */
+            width: 60px; /* Largura do botão */
+            height: 60px; /* Altura do botão */
+            border-radius: 50%; /* Faz o botão ser redondo */
+            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+            display: flex; /* Alinhar o conteúdo do botão */
+            justify-content: center; /* Centralizar horizontalmente */
+            align-items: center; /* Centralizar verticalmente */
+            transition: background-color 0.3s ease; /* Efeito suave ao mudar a cor */
+            overflow: hidden; /* Esconde partes da imagem que saem do botão */
+        }
+
+        /* Estilos do dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent; /* Cor do botão dropdown */
+            color: white; /* Cor do texto */
+            padding: 10px 20px; /* Espaçamento interno */
+            font-size: 16px; /* Tamanho do texto */
+            border: none; /* Sem bordas */
+            cursor: pointer; /* Cursor de ponteiro */
+            border-radius: 50%; /* Faz o botão ser redondo */
+            font-style: italic;
+        }
+
+        .dropdown-content {
+            display: none; /* Ocultado por padrão */
+            position: absolute;
+            background-color: transparent; /* Cor de fundo do dropdown */
+            min-width: 160px; /* Largura mínima */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+            z-index: 1; /* Para ficar acima de outros elementos */
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+
+        .dropdown-content a {
+            color: white; /* Cor dos links */
+            padding: 12px 16px; /* Espaçamento interno dos links */
+            text-decoration: none; /* Sem sublinhado */
+            display: block; /* Mostra cada link como um bloco */
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgb(51, 51, 51); /* Cor de fundo ao passar o mouse */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Mostra o dropdown ao passar o mouse */
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: transparent; /* Cor do botão ao passar o mouse */
+        }
+
+        .image-container {
+            width: 100%; /* O contêiner ocupa 100% do botão */
+            height: 100%; /* O contêiner ocupa 100% do botão */
+            display: flex; /* Permite centralizar a imagem */
+            justify-content: center; /* Centraliza a imagem horizontalmente */
+            align-items: center; /* Centraliza a imagem verticalmente */
+        }
+
+        img {
+            width: auto; /* A largura da imagem é automática */
+            height: 100%; /* Altura da imagem ocupa 100% do contêiner */
+            object-fit: cover; /* Cobre o espaço do contêiner mantendo a proporção */
+        }
+
+        main {
+
+    flex: 1; /* Ocupará o espaço disponível entre o cabeçalho e o rodapé */
+    text-align: center;
+    padding: 20px; /* Adicionei padding para dar um espaçamento interno */
+    margin-top: 100px; /* Compensa a altura do header fixo */
+    display: flex; /* Permite o uso de flexbox para alinhar os filhos */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    gap: 20px; /* Espaço entre os botões */
+    border-radius: 10;
+
+        }
+        table{
+            background-color: black;
+            color: white;
+            font-family:Arial, Helvetica, sans-serif;
+            width: 10%;
+            height: 10%;
+            align-items: right;
+            border-radius: 10%;
+
+        }
+
+        footer {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        iframe {
+    border: none; /* Remove a borda do iframe */
+    align-items: right;
+    border-radius: 10%;
+      }
+      .full-screen-button {
+    display: inline-block;
+    background-size: cover; /* Garante que a imagem cubra toda a área do botão */
+    background-position: center; /* Centraliza a imagem no botão */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    width: 40vw; /* Ocupa 100% da largura da tela */
+    height: 20vh; /* Ocupa 100% da altura da tela */
+    border-radius: 10;
+    cursor: pointer; /* Mostra o cursor de ponteiro ao passar o mouse */
+    display: flex; /* Flexbox para centralizar conteúdo dentro do botão */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    border: none; /* Remove qualquer borda padrão */
+    overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas */
+    border-color: transparent;
+    background-color: transparent;
+    margin-bottom: 0px;
+}
+img{
+    border-radius: 10px;
+
+}
+.banner-container {
+    overflow: hidden; /* Esconde a parte que está fora do contêiner */
+    white-space: nowrap; /* Impede que os banners quebrem para a próxima linha */
+    animation: scroll-left 5s linear infinite; /* Define a animação */
+    margin-top: 90px; /* Adiciona margem superior para mover o banner para baixo */
+
+
+}
+
+.banner {
+    display: inline-block; /* Mantém os banners em linha */
+    margin-right: 30px; /* Espaçamento entre os banners */
+}
+
+.banner img {
+    height: 190px; /* Ajuste a altura do banner conforme necessário */
+    width: auto; /* Mantém a proporção da largura */
+    /* largura: 100%; pode ser usado se você quiser que a imagem ocupe toda a largura do banner */
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%); /* Começa fora da tela à direita */
+    }
+    100% {
+        transform: translateX(-100%); /* Move para fora da tela à esquerda */
+    }
+}
+     a{
+
+        border-radius: 10;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        
+     }
+     .banner-container:hover {
+    animation-play-state: paused; /* Para a animação ao passar o mouse */
+}
+img:hover {
+    transform: scale(1.2); /* Aumenta o tamanho da imagem para 120% quando o mouse está sobre ela */
+
+}
+.banner img {
+    height: 30px; /* Ajuste a altura do banner conforme necessário */
+    animation-play-state: running; /* Mantém a animação em execução por padrão */
+
+}
+#left-arrow {
+    left: -60px; /* Posiciona a seta à esquerda */
+}
+
+#right-arrow {
+    right: -60px; /* Posiciona a seta à direita */
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <button class="rioters-button">
+            <div class="image-container">
+                <img src="C:\Users\Murilo\Desktop\Site\Rioters.jpg" alt="Home"> <!-- Usando uma imagem de exemplo -->
+            </div>
+        </button>
+
+        <div class="dropdown">
+            <button class="dropbtn"><strong>Valorant</strong></button>
+            <div class="dropdown-content">
+                <strong><a href="#">VCT AMERICAS</a></strong>
+                <strong><a href="#">CHAMPIONS</a></strong>
+                <strong><a href="#">MASTERS</a> </strong>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn"><strong>league of Legends</strong></button>
+            <div class="dropdown-content">
+            <strong><a href="#">CBLOL</a></strong>
+            <strong><a href="#">MSI</a></strong>
+            <strong><a href="#">WORLDS</a> </strong>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn"><strong>Transferencia</strong></button>
+            <div class="dropdown-content">
+                <strong><a href="#">EM ANDAMENTTO</a></strong>
+                <strong><a href="#">EM ANDAMENTTO</a></strong>
+                <strong><a href="#">EM ANDAMENTTO</a></strong>
+            </div>
+        </div>
+        <div class="banner-container">
+            <a class="banner" href="">
+                <img src="C:\Users\Murilo\Downloads\jinx.jpg" alt="Banner 1">
+            </a>
+            <a class="banner" href="">
+                <img src="C:\Users\Murilo\Downloads\jinx.jpg" alt="Banner 2">
+            </a>
+            <a href="">
+            <div class="banner">
+                <img src="C:\Users\Murilo\Downloads\jinx.jpg" alt="Banner 3">
+            </div>
+        </a>
+    </div>
+    </header>
+
+    <main>
+        <div class="image-wrapper">
+
+            
+            <!-- A imagem que será trocada -->
+             <a href=""><img id="image" src="C:\Users\Murilo\Desktop\Site\BotaoRioters.jpg" alt="Imagem atual"></a>
+            
+
+        </div>
+
+    
+        <script src="js/scripts.js"></script>
+    
+
+    
+        <script>
+            // Exemplo de requisição para uma API (troque pela URL real da API)
+            fetch('https://api.api-futebol.com.br/v1/ao-vivo')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector('#tabela-classificacao tbody');
+                    data.classificacao.forEach((time, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${time.nome}</td>
+                            <td>${time.pontos}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erro ao buscar os dados:', error));
+        </script>
+        <script>
+            // Array de imagens disponíveis para alternar
+const imagens = [
+    "C:\Users\Murilo\Desktop\Site\BotaoRioters.jpg",
+    "C:\Users\Murilo\Desktop\Site\BotaoRioters.jpg",
+    "C:\Users\Murilo\Desktop\Site\BotaoRioters.jpg"
+];
+
+// Índice atual da imagem
+let indiceAtual = 0;
+
+// Função para trocar a imagem
+function trocarImagem(direcao) {
+    const imgElement = document.getElementById("image");
+
+    if (direcao === "right") {
+        // Avança para a próxima imagem
+        indiceAtual = (indiceAtual + 1) % imagens.length; // Loop circular
+    } else if (direcao === "left") {
+        // Volta para a imagem anterior
+        indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length; // Loop circular
+    }
+
+    // Atualiza o src da imagem
+    imgElement.src = imagens[indiceAtual];
+}
+
+        </script>
+
+    
+    </main>
+    <h1>
+        <div class="button-container">
+            <a class="full-screen-button" href=""><img src="C:\Users\Murilo\Downloads\Design sem nome (7).jpg" alt="Noticia"></a>
+
+            <a class="full-screen-button">
+                <img src="C:\Users\Murilo\Downloads\Design sem nome (8).jpg" alt="Noticia">
+            </a>
+            
+        
+            <a class="full-screen-button" href="">
+                <img src="C:\Users\Murilo\Downloads\Design sem nome (7).jpg" alt="Noticia">
+            </a>
+            <a class="full-screen-button" href="">
+                <img src="C:\Users\Murilo\Downloads\Design sem nome (8).jpg" alt="Noticia">
+            </a>
+            <a class="full-screen-button" href="">
+                <img src="C:\Users\Murilo\Downloads\Design sem nome (8).jpg" alt="Noticia">
+            </a>
+            <a class="full-screen-button" href="">
+                <img src="C:\Users\Murilo\Downloads\Design sem nome (8).jpg" alt="Noticia">
+            </a>
+        </div>
+    </h1>
+
+
+    <footer>
+        <div><strong>Site feito para aqueles que Amam LOL e Valorant</strong></div>
+    </footer>
+
+    <script>
+        // Função para alterar a cor do cabeçalho ao rolar
+        window.onscroll = function() {
+            const header = document.getElementById("header");
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition > 0) {
+                header.classList.add("header-scrolled"); // Adiciona a classe quando rola para baixo
+            } else {
+                header.classList.remove("header-scrolled"); // Remove a classe quando está no topo
+            }
+        };
+        const bannerContainer = document.querySelector('.banner-container');
+const leftBtn = document.getElementById('left-btn');
+const rightBtn = document.getElementById('right-btn');
+
+
+    </script>
+    
+</body>
+</html>
